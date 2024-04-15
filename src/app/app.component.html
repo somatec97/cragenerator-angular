@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<h3 style="text-align: center;"> Générer le compte rendu d'activités sous forme pdf</h3>
+<br>
+<table>
+    <thead>
+        
+           
+        <th>
+            <div class="col">
+                Date
+            </div>
+        </th>
+
+        <th><div class="col">Heures travaillées</div></th>
+        <th><div class="col">Description</div></th>
+        <th><div class="col">Tjm</div></th>
+            
+    </thead>
+        <tbody id="table-body">
+        </tbody>
+    </table>
+    <form>
+        <input type="date" id="date">
+        <input type="number" id="hours" placeholder="Heures travaillées">
+        <input type="text" id="description" placeholder="Description">
+        <input type="number" id="tjm" placeholder="Tjm">
+        <button onclick="addRow()">Ajouter une ligne</button>
+    </form>
+    
+<div class="row">
+    <div class="col-12">
+        <div style="text-align: right;margin-inline-end: 20%;">
+            <div class="col-3" style="display: inline-block;cursor: pointer;margin-left: 10px;">
+                <a (click)="genererCraPdf()"><img src="assets/pdf1.png"></a>
+            </div>    
+        </div>
+    </div>
+</div>
