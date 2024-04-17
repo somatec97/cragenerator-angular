@@ -10,13 +10,15 @@ import { OnInit } from '@angular/core';
 export class AppComponent  {
   title = 'cragenerator';
   pdf = Object
+  craForm : any;
 
   constructor(private crageneratorService: CrageneratorService){
+    this.craForm = {};
 
   }
  
-  genererCraPdf(){
-    this.crageneratorService.genererCraPdf().subscribe(x => {
+  genererCraPdf(craForm: any){
+    this.crageneratorService.genererCraPdf(this.craForm).subscribe(x => {
       const blob = new Blob([x], {type: 'app/pdf'});
       const data = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
