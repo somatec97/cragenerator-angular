@@ -1,49 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
-<h3 style="text-align: center;"> Générer le compte rendu d'activités sous forme pdf</h3>
-<br>
-<table>
-    <thead>
-        
-           
-        <th>
-            <div class="col">
-                Date
-            </div>
-        </th>
 
-        <th><div class="col">Heures travaillées</div></th>
-        <th><div class="col">Description</div></th>
-        <th><div class="col">Tjm</div></th>
-            
-    </thead>
-        <tbody id="table-body">
-        </tbody>
-    </table>
-    <form>
-        <input type="date" id="date">
-        <input type="number" id="hours" placeholder="Heures travaillées">
-        <input type="text" id="description" placeholder="Description">
-        <input type="number" id="tjm" placeholder="Tjm">
-        <button onclick="addRow()">Ajouter une ligne</button>
-    </form>
-    
-<div class="row">
-    <div class="col-12">
-        <div style="text-align: right;margin-inline-end: 20%;">
-            <div class="col-3" style="display: inline-block;cursor: pointer;margin-left: 10px;">
-                <a (click)="genererCraPdf()"><img src="assets/pdf1.png"></a>
-            </div>    
+<mat-toolbar color="primary">
+    CRA Generator
+  </mat-toolbar>
+  <h2>Générer votre compte rendu d'activités en quelques minutes avec CRA Generator</h2>
+  <p>
+    <button mat-flat-button color="primary"  class="example-form" (click)="ajoutLigne()">Ajouter une nouvelle ligne</button>
+  </p>
+  <p>
+    <div [formGroup]="craForm">
+      <mat-form-field class="example-form">
+          <mat-label>Taux journalier moyen</mat-label>
+          <input formControlName="tjm" type="number" matInput placeholder=" " >
+        </mat-form-field>
+    </div>
+  <p>
+    <div [formGroup]="craForm">
+      <mat-form-field class="example-form">
+          <mat-label>Description</mat-label>
+          <textarea formControlName="description" matInput placeholder="Ex. une petite description ..."></textarea>
+        </mat-form-field>
+    </div>
+  <form [formGroup]="craForm" (ngSubmit)="genererCraPdf(craForm.value)" class="example-form">
+    <div formArrayName="lignes" *ngFor="let ligne of lignes.controls; index as i">
+        <div [formGroupName]="i">
+            <table class="example-full-width" cellspacing="0">
+              <tr>
+                <th>
+                  <mat-form-field class="example-form">
+                    <mat-label>Choisissez une date</mat-label>
+                    <input formControlName="date" matInput [matDatepicker]="picker">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field> 
+                </th>
+                <th>
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Heures travaillées</mat-label>
+                    <input formControlName="heuresTravail" type="number" matInput placeholder="0.00" value="0.00">
+                  </mat-form-field>
+                </th>
+              </tr>
+            </table>
         </div>
     </div>
-</div>
+  </form>
+  <button mat-flat-button color="primary" class="example-form" (click)="genererCraPdf(craForm.value)">Générer CRA en Pdf</button>
+
+    
+  
+     
+    
+    

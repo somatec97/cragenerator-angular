@@ -12,7 +12,7 @@ export class CrageneratorService {
   constructor(private httpClient: HttpClient) {
 
    }
-   genererCraPdf(): Observable<Blob>{
-    return this.httpClient.get(`${this.API_URL+this.PDF}`, { responseType:`blob`});
+   genererCraPdf(craForm: any): Observable<Blob>{
+    return this.httpClient.post(`${this.API_URL+this.PDF}`,craForm, { responseType:`blob`});
    }
 }
