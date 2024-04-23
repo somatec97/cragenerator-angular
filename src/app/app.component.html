@@ -4,9 +4,6 @@
   </mat-toolbar>
   <h2>Générer votre compte rendu d'activités en quelques minutes avec CRA Generator</h2>
   <p>
-    <button mat-flat-button color="primary"  class="example-form" (click)="ajoutLigne()">Ajouter une nouvelle ligne</button>
-  </p>
-  <p>
     <div [formGroup]="craForm">
       <mat-form-field class="example-form">
           <mat-label>Taux journalier moyen</mat-label>
@@ -27,12 +24,15 @@
               <tr>
                 <th>
                   <mat-form-field class="example-form">
-                    <mat-label>Choisissez une date</mat-label>
-                    <input formControlName="date" matInput [matDatepicker]="picker">
-                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-label>Enter a date range</mat-label>
+                    <mat-date-range-input [rangePicker]="picker">
+                      <input formControlName="dateDebut" matStartDate placeholder="dateDebut">
+                      <input formControlName="dateFin" matEndDate placeholder="dateFin">
+                    </mat-date-range-input>
+                    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field> 
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                  </mat-form-field>
                 </th>
                 <th>
                   <mat-form-field class="example-full-width">

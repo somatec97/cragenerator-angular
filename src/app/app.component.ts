@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CrageneratorService } from './cragenerator.service';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { OnInit } from '@angular/core';
+
 import { FormArray, FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-root',
@@ -27,7 +28,8 @@ export class AppComponent  implements OnInit {
     
     creerLigne(): FormGroup{
       return this.formBuilder.group({
-        date:null,
+        dateDebut:null,
+        dateFin: null,
         heuresTravail:0,
       });
     }
