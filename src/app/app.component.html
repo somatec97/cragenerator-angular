@@ -10,7 +10,7 @@
     <div [formGroup]="craForm">
       <mat-form-field class="example-form">
           <mat-label>Taux journalier moyen</mat-label>
-          <input formControlName="tjm" type="number" matInput placeholder="450 " value="450 ">
+          <input formControlName="tjm" type="number" matInput placeholder=" " >
         </mat-form-field>
     </div>
   <p>
@@ -25,7 +25,7 @@
         <div [formGroupName]="i">
             <table class="example-full-width" cellspacing="0">
               <tr>
-                <td>
+                <th>
                   <mat-form-field class="example-form">
                     <mat-label>Choisissez une date</mat-label>
                     <input formControlName="date" matInput [matDatepicker]="picker">
@@ -33,13 +33,13 @@
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field> 
-                </td>
-                <td>
+                </th>
+                <th>
                   <mat-form-field class="example-full-width">
                     <mat-label>Heures travaillées</mat-label>
-                    <input formControlName="heuresTravail" type="number" matInput placeholder="12" value="12">
+                    <input formControlName="heuresTravail" type="number" matInput placeholder="">
                   </mat-form-field>
-                </td>
+                </th>
               </tr>
             </table>
         </div>
