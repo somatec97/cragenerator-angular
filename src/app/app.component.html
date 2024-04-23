@@ -13,7 +13,10 @@
           <input formControlName="tjm" type="number" matInput placeholder=" " >
         </mat-form-field>
     </div>
+<<<<<<< HEAD
     
+=======
+>>>>>>> feature/CG-5/Mettre-en-place-Angular-Material-sur-la-partie-front
   <p>
     <div [formGroup]="craForm">
       <mat-form-field class="example-form">
@@ -25,7 +28,10 @@
     <div formArrayName="lignes" *ngFor="let ligne of lignes.controls; index as i">
         <div [formGroupName]="i">
             <table class="example-full-width" cellspacing="0">
+<<<<<<< HEAD
               <caption>
+=======
+>>>>>>> feature/CG-5/Mettre-en-place-Angular-Material-sur-la-partie-front
               <tr>
                 <th>
                   <mat-form-field class="example-form">
@@ -39,11 +45,18 @@
                 <th>
                   <mat-form-field class="example-full-width">
                     <mat-label>Heures travaillées</mat-label>
+<<<<<<< HEAD
                     <input formControlName="heuresTravail" type="number" matInput placeholder="">
                   </mat-form-field>
                 </th>
               </tr>
               </caption>
+=======
+                    <input formControlName="heuresTravail" type="number" matInput placeholder="0.00" value="0.00">
+                  </mat-form-field>
+                </th>
+              </tr>
+>>>>>>> feature/CG-5/Mettre-en-place-Angular-Material-sur-la-partie-front
             </table>
         </div>
     </div>
