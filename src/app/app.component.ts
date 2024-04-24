@@ -18,7 +18,7 @@ export class AppComponent  implements OnInit {
     ngOnInit(){
       this.craForm = this.formBuilder.group({
         description:"",
-        tjm:0.0,
+        tjm:0.00,
         lignes: this.formBuilder.array([
           this.creerLigne()
         ])
