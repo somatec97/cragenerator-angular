@@ -19,13 +19,12 @@ export class AppComponent  implements OnInit {
     ngOnInit(){
       this.craForm = this.formBuilder.group({
         description:"",
-        tjm:0.0,
+        tjm:0.00,
         lignes: this.formBuilder.array([
           this.creerLigne()
         ])
       });
     }
-    
     creerLigne(): FormGroup{
       return this.formBuilder.group({
         dateDebut:null,
@@ -41,7 +40,6 @@ export class AppComponent  implements OnInit {
     }
     
   genererCraPdf(craForm: any){
-    
     console.log(this.craForm.value);
     this.crageneratorService.genererCraPdf(this.craForm.value).subscribe(x => {
       const blob = new Blob([x], {type: 'app/pdf'});
