@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CrageneratorService } from './cragenerator.service';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { OnInit } from '@angular/core';
+
 import { FormArray, FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-root',
@@ -24,11 +25,13 @@ export class AppComponent  implements OnInit {
         ])
       });
     }
-    
     creerLigne(): FormGroup{
       return this.formBuilder.group({
         date:null,
+        dateDebut:null,
+        dateFin: null,
         heuresTravail:0,
+        heuresTavailSeuleDate:0,
       });
     }
     ajoutLigne(): void{
@@ -37,9 +40,8 @@ export class AppComponent  implements OnInit {
     get lignes(): FormArray{
       return this.craForm.get('lignes') as FormArray;
     }
-    
+  
   genererCraPdf(craForm: any){
-    
     console.log(this.craForm.value);
     this.crageneratorService.genererCraPdf(this.craForm.value).subscribe(x => {
       const blob = new Blob([x], {type: 'app/pdf'});
