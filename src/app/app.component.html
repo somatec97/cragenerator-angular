@@ -27,45 +27,35 @@
               <tr>
                 <th>
                   <mat-form-field class="example-form-field">
-                    <mat-label>Choose a date</mat-label>
+                    <mat-label>Choisir une date</mat-label>
                     <input formControlName="date" matInput [matDatepicker]="datepicker">
                     <mat-hint>MM/DD/YYYY</mat-hint>
                     <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
-                    <mat-datepicker #datepicker>
-                      <mat-datepicker-actions>
-                        <button mat-button matDatepickerCancel>Cancel</button>
-                        <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
-                      </mat-datepicker-actions>
-                    </mat-datepicker>
+                    <mat-datepicker #datepicker></mat-datepicker>
                   </mat-form-field>
                 </th>
                 <th>
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Heures travaillées pour une seule journée</mat-label>
+                  <mat-form-field class="example-form-field">
+                    <mat-label>Heures travaillées (un jour)</mat-label>
                     <input formControlName="heuresTavailSeuleDate" type="number" matInput placeholder="0.00">
                   </mat-form-field>
                 </th>
                 <th>
                   
                   <mat-form-field class="example-form-field">
-                    <mat-label>Enter a date range</mat-label>
+                    <mat-label>Entrer une plage de date</mat-label>
                     <mat-date-range-input [rangePicker]="rangePicker">
                       <input formControlName="dateDebut" matStartDate placeholder="Start date">
                       <input formControlName="dateFin" matEndDate placeholder="End date">
                     </mat-date-range-input>
                     <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
                     <mat-datepicker-toggle matIconSuffix [for]="rangePicker"></mat-datepicker-toggle>
-                    <mat-date-range-picker #rangePicker>
-                      <mat-date-range-picker-actions>
-                        <button mat-button matDateRangePickerCancel>Cancel</button>
-                        <button mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
-                      </mat-date-range-picker-actions>
-                    </mat-date-range-picker>
+                    <mat-date-range-picker #rangePicker></mat-date-range-picker>
                   </mat-form-field>
                 </th>
                 <th>
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Heures travaillées</mat-label>
+                  <mat-form-field class="example-form-field">
+                    <mat-label>Heures travaillées (plage)</mat-label>
                     <input formControlName="heuresTravail" type="number" matInput placeholder="0.00">
                   </mat-form-field>
                 </th>
