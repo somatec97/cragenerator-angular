@@ -27,19 +27,14 @@
               <tr>
                 <th>
                   <mat-form-field class="example-form-field">
-                    <mat-label>Choisir une date</mat-label>
-                    <input formControlName="date" matInput [matDatepicker]="datepicker">
+                    <mat-label>Date de repos</mat-label>
+                    <input formControlName="jourRepos" matInput [matDatepicker]="datepicker">
                     <mat-hint>MM/DD/YYYY</mat-hint>
                     <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
                     <mat-datepicker #datepicker></mat-datepicker>
                   </mat-form-field>
                 </th>
-                <th>
-                  <mat-form-field class="example-form-field">
-                    <mat-label>Heures travaillées (un jour)</mat-label>
-                    <input formControlName="heuresTavailSeuleDate" type="number" matInput placeholder="0.00">
-                  </mat-form-field>
-                </th>
+                
                 <th>
                   
                   <mat-form-field class="example-form-field">
@@ -55,7 +50,7 @@
                 </th>
                 <th>
                   <mat-form-field class="example-form-field">
-                    <mat-label>Heures travaillées (plage)</mat-label>
+                    <mat-label>Heures travaillées</mat-label>
                     <input formControlName="heuresTravail" type="number" matInput placeholder="0.00">
                   </mat-form-field>
                 </th>

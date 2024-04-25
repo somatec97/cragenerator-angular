@@ -27,11 +27,10 @@ export class AppComponent  implements OnInit {
     }
     creerLigne(): FormGroup{
       return this.formBuilder.group({
-        date:null,
+        jourRepos:null,
         dateDebut:null,
         dateFin: null,
         heuresTravail:0,
-        heuresTavailSeuleDate:0,
       });
     }
     ajoutLigne(): void{
