@@ -1,11 +1,11 @@
 
 <mat-toolbar color="primary">
     CRA Generator
-  </mat-toolbar>
-  <h2>Générer votre compte rendu d'activités en quelques minutes avec CRA Generator</h2>
-  <p>
-    <button mat-flat-button color="primary"  class="example-form" (click)="ajoutLigne()">Ajouter une nouvelle ligne</button>
-  </p>
+</mat-toolbar>
+<h2>Générer votre compte rendu d'activités en quelques minutes avec CRA Generator</h2>
+<p>
+  <button mat-flat-button color="primary"  class="example-form" (click)="ajoutLigne()">Ajouter une nouvelle ligne</button>
+</p>
   <p>
     <div [formGroup]="craForm">
       <mat-form-field class="example-form">
@@ -13,10 +13,6 @@
           <input formControlName="tjm" type="number" matInput placeholder=" " >
         </mat-form-field>
     </div>
-<<<<<<< HEAD
-    
-=======
->>>>>>> feature/CG-5/Mettre-en-place-Angular-Material-sur-la-partie-front
   <p>
     <div [formGroup]="craForm">
       <mat-form-field class="example-form">
@@ -28,35 +24,37 @@
     <div formArrayName="lignes" *ngFor="let ligne of lignes.controls; index as i">
         <div [formGroupName]="i">
             <table class="example-full-width" cellspacing="0">
-<<<<<<< HEAD
-              <caption>
-=======
->>>>>>> feature/CG-5/Mettre-en-place-Angular-Material-sur-la-partie-front
               <tr>
                 <th>
-                  <mat-form-field class="example-form">
-                    <mat-label>Choisissez une date</mat-label>
-                    <input formControlName="date" matInput [matDatepicker]="picker">
+                  <mat-form-field class="example-form-field">
+                    <mat-label>Date de repos</mat-label>
+                    <input formControlName="jourRepos" matInput [matDatepicker]="datepicker">
                     <mat-hint>MM/DD/YYYY</mat-hint>
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field> 
+                    <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #datepicker></mat-datepicker>
+                  </mat-form-field>
+                </th>
+                
+                <th>
+                  
+                  <mat-form-field class="example-form-field">
+                    <mat-label>Entrer une plage de date</mat-label>
+                    <mat-date-range-input [rangePicker]="rangePicker">
+                      <input formControlName="dateDebut" matStartDate placeholder="Start date">
+                      <input formControlName="dateFin" matEndDate placeholder="End date">
+                    </mat-date-range-input>
+                    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="rangePicker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #rangePicker></mat-date-range-picker>
+                  </mat-form-field>
                 </th>
                 <th>
-                  <mat-form-field class="example-full-width">
+                  <mat-form-field class="example-form-field">
                     <mat-label>Heures travaillées</mat-label>
-<<<<<<< HEAD
-                    <input formControlName="heuresTravail" type="number" matInput placeholder="">
+                    <input formControlName="heuresTravail" type="number" matInput placeholder="0.00">
                   </mat-form-field>
                 </th>
               </tr>
-              </caption>
-=======
-                    <input formControlName="heuresTravail" type="number" matInput placeholder="0.00" value="0.00">
-                  </mat-form-field>
-                </th>
-              </tr>
->>>>>>> feature/CG-5/Mettre-en-place-Angular-Material-sur-la-partie-front
             </table>
         </div>
     </div>
