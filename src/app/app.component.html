@@ -3,6 +3,7 @@
     CRA Generator
 </mat-toolbar>
 <h2>Générer votre compte rendu d'activités en quelques minutes avec CRA Generator</h2>
+
 <p>
   <button mat-flat-button color="primary"  class="example-form" (click)="ajoutLigne()">Ajouter une nouvelle ligne</button>
 </p>
@@ -20,24 +21,19 @@
           <textarea formControlName="description" matInput placeholder="Ex. une petite description ..."></textarea>
         </mat-form-field>
     </div>
+    <div [formGroup]="craForm">
+      <mat-form-field class="example-form">
+          <mat-label>Mois</mat-label>
+          <input formControlName="mois" type="number" matInput placeholder=" " min="1" max="12">
+        </mat-form-field>
+    </div>
   <form [formGroup]="craForm" (ngSubmit)="genererCraPdf(craForm.value)" class="example-form">
     <div formArrayName="lignes" *ngFor="let ligne of lignes.controls; index as i">
         <div [formGroupName]="i">
             <table class="example-full-width" cellspacing="0">
-              <tr>
+              <tr>                
                 <th>
-                  <mat-form-field class="example-form-field">
-                    <mat-label>Date de repos</mat-label>
-                    <input formControlName="jourRepos" matInput [matDatepicker]="datepicker">
-                    <mat-hint>MM/DD/YYYY</mat-hint>
-                    <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
-                    <mat-datepicker #datepicker></mat-datepicker>
-                  </mat-form-field>
-                </th>
-                
-                <th>
-                  
-                  <mat-form-field class="example-form-field">
+                  <mat-form-field class="example-full-width">
                     <mat-label>Entrer une plage de date</mat-label>
                     <mat-date-range-input [rangePicker]="rangePicker">
                       <input formControlName="dateDebut" matStartDate placeholder="Start date">
@@ -49,7 +45,7 @@
                   </mat-form-field>
                 </th>
                 <th>
-                  <mat-form-field class="example-form-field">
+                  <mat-form-field class="example-full-width">
                     <mat-label>Heures travaillées</mat-label>
                     <input formControlName="heuresTravail" type="number" matInput placeholder="0.00">
                   </mat-form-field>
@@ -60,6 +56,15 @@
     </div>
   </form>
   <button mat-flat-button color="primary" class="example-form" (click)="genererCraPdf(craForm.value)">Générer CRA en Pdf</button>
+  <p>
+  <div *ngFor="let jourFerie of joursFeries" class="jour-ferie">
+    <span class="jour-ferie-date">{{jourFerie.date}}</span>
+    <span class="jour-ferie-name">{{jourFerie.name}}</span>
+  </div>
+  
+  
+ 
+  
 
     
   

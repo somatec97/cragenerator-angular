@@ -11,6 +11,27 @@
   .example-form-field {
     margin-right: 10px;
   }
+  .jour-ferie {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    min-width: 200px;
+    max-width: 730px;
+    width: 100%;
+  }
+  
+  .jour-ferie-date {
+    font-weight: bold;
+  }
+  
+  .jour-ferie-name {
+    color: #888;
+  }
+  
   
   
   
