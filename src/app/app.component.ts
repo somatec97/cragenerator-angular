@@ -30,6 +30,8 @@ export class AppComponent  implements OnInit {
     ngOnInit(){
       this.craForm = this.formBuilder.group({
         description:"",
+        client:"",
+        projet:"",
         tjm:0.00,
         mois: [new Date().getMonth()+1, Validators.required],
         lignes: this.formBuilder.array([
