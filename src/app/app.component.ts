@@ -14,7 +14,6 @@ export class AppComponent  implements OnInit {
   pdf = Object
   craForm !: FormGroup;
   joursFeries: any[] = [];
-
   constructor(private crageneratorService: CrageneratorService, private formBuilder: FormBuilder,private apiJFService: ApiJFService){
     this.joursFeries = [];
     const moisEnCours = new Date().getMonth()+1;
@@ -33,22 +32,28 @@ export class AppComponent  implements OnInit {
         client:"",
         projet:"",
         tjm:0.00,
-        mois: [new Date().getMonth()+1, Validators.required],
         lignes: this.formBuilder.array([
           this.creerLigne()
         ])
       });
-      this.craForm.get('mois')?.valueChanges.subscribe(mois => {
-        this.lesJoursFeries(mois);
-      });
+        const moisEnCours = new Date().getMonth()+1;
+        this.lesJoursFeries(moisEnCours);
     }   
   
     creerLigne(): FormGroup{
-      return this.formBuilder.group({
+        const ligne = this.formBuilder.group({
         dateDebut: null,
         dateFin: null,
         heuresTravail:0,
       });
+      ligne.get('dateDebut')?.valueChanges.subscribe(dateDebut => {
+        if(dateDebut){
+          const mois = new Date(dateDebut).getMonth()+1;
+          this.lesJoursFeries(mois);
+        }
+      });
+      return ligne;
+      
     }
     ajoutLigne(): void{
       this.lignes.push(this.creerLigne());
@@ -71,7 +76,6 @@ export class AppComponent  implements OnInit {
       seconds = seconds.length< 2? '0'+seconds:seconds;
       return ( [year, month, day].join('-')+'T'+[hours,minutes,seconds].join(':')+'.000');
     }
-  
   genererCraPdf(craForm: any){
     this.craForm.value.lignes.forEach((ligne: any) => {
       ligne.dateDebut = this.getISOString(new Date(ligne.dateDebut));
@@ -85,12 +89,10 @@ export class AppComponent  implements OnInit {
       link.href = data;
       link.download = 'cragenerator.pdf';
       link.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, view: window}));
-
       setTimeout(function(){
         window.URL.revokeObjectURL(data);
         link.remove();
       }, 100);
-
     });
   }
 }
