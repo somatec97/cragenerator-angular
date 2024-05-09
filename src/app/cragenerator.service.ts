@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CrageneratorService {
   readonly API_URL = "http://localhost:8080"
-  readonly PDF = "/generer-pdf"
+  readonly PDF = "/api/cra"
 
   constructor(private httpClient: HttpClient) {
 

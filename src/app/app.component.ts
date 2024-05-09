@@ -14,13 +14,9 @@ export class AppComponent  implements OnInit {
   pdf = Object
   craForm !: FormGroup;
   joursFeries: any[] = [];
-  constructor(private crageneratorService: CrageneratorService, private formBuilder: FormBuilder,private apiJFService: ApiJFService){
-    this.joursFeries = [];
-    const moisEnCours = new Date().getMonth()+1;
-    this.lesJoursFeries(moisEnCours);
-  }
-  lesJoursFeries(mois: number){
-    this.apiJFService.lesJoursFeries(mois).subscribe((data: 
+  constructor(private crageneratorService: CrageneratorService, private formBuilder: FormBuilder,private apiJFService: ApiJFService){}
+  lesJoursFeries(mois: number , annee: number){
+    this.apiJFService.lesJoursFeries(mois, annee).subscribe((data: 
       {[key: string]: string }) => {
       this.joursFeries = Object.keys(data).map(date => ({date, name: data[date]}));
       console.log(this.joursFeries);
@@ -37,7 +33,8 @@ export class AppComponent  implements OnInit {
         ])
       });
         const moisEnCours = new Date().getMonth()+1;
-        this.lesJoursFeries(moisEnCours);
+        const anneeEnCours = new Date().getFullYear();
+        this.lesJoursFeries(moisEnCours, anneeEnCours);
     }   
   
     creerLigne(): FormGroup{
@@ -49,7 +46,8 @@ export class AppComponent  implements OnInit {
       ligne.get('dateDebut')?.valueChanges.subscribe(dateDebut => {
         if(dateDebut){
           const mois = new Date(dateDebut).getMonth()+1;
-          this.lesJoursFeries(mois);
+          const annee = new Date(dateDebut).getFullYear();
+          this.lesJoursFeries(mois, annee);
         }
       });
       return ligne;
