@@ -3,41 +3,49 @@
     CRA Generator
 </mat-toolbar>
 <h2>Générer votre compte rendu d'activités en quelques minutes avec CRA Generator</h2>
+<div class="container">
+  <div class="form-container">
 <p>
   <button mat-flat-button color="primary"  class="example-form" (click)="ajoutLigne()">Ajouter une nouvelle ligne</button>
 </p>
   <p>
-    <div [formGroup]="craForm">
-      <mat-form-field class="example-form">
-          <mat-label>Taux journalier moyen</mat-label>
-          <input formControlName="tjm" type="number" matInput placeholder=" " >
-        </mat-form-field>
-    </div>
-  <p>
+    <form [formGroup]="craForm" (ngSubmit)="genererCraPdf(craForm.value)" class="example-form">
+    <table class="example-full-width" cellspacing="0">
+      <tr>                
+        <th>
+          <mat-form-field class="example-full-width">
+            <mat-label>Client</mat-label>
+            <input formControlName="client" type="text" matInput placeholder="">
+          </mat-form-field>
+        </th>
+        <th>
+          <mat-form-field class="example-full-width">
+            <mat-label>Projet</mat-label>
+            <input formControlName="projet" type="text" matInput placeholder="">
+          </mat-form-field>
+        </th>
+        <th>
+          <mat-form-field class="example-full-width">
+            <mat-label>Taux journalier moyen</mat-label>
+            <input formControlName="tjm" type="number" matInput placeholder=" " >
+          </mat-form-field>
+        </th>
+      </tr>
+    </table>
     <div [formGroup]="craForm">
       <mat-form-field class="example-form">
           <mat-label>Description</mat-label>
           <textarea formControlName="description" matInput placeholder="Ex. une petite description ..."></textarea>
         </mat-form-field>
     </div>
-  <form [formGroup]="craForm" (ngSubmit)="genererCraPdf(craForm.value)" class="example-form">
+    </form>
+    <form [formGroup]="craForm" (ngSubmit)="genererCraPdf(craForm.value)" class="example-form">
     <div formArrayName="lignes" *ngFor="let ligne of lignes.controls; index as i">
         <div [formGroupName]="i">
             <table class="example-full-width" cellspacing="0">
-              <tr>
+              <tr>                
                 <th>
-                  <mat-form-field class="example-form-field">
-                    <mat-label>Date de repos</mat-label>
-                    <input formControlName="jourRepos" matInput [matDatepicker]="datepicker">
-                    <mat-hint>MM/DD/YYYY</mat-hint>
-                    <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
-                    <mat-datepicker #datepicker></mat-datepicker>
-                  </mat-form-field>
-                </th>
-                
-                <th>
-                  
-                  <mat-form-field class="example-form-field">
+                  <mat-form-field class="example-full-width">
                     <mat-label>Entrer une plage de date</mat-label>
                     <mat-date-range-input [rangePicker]="rangePicker">
                       <input formControlName="dateDebut" matStartDate placeholder="Start date">
@@ -49,9 +57,9 @@
                   </mat-form-field>
                 </th>
                 <th>
-                  <mat-form-field class="example-form-field">
+                  <mat-form-field class="example-full-width">
                     <mat-label>Heures travaillées</mat-label>
-                    <input formControlName="heuresTravail" type="number" matInput placeholder="0.00">
+                    <input formControlName="heuresTravail" type="number" matInput placeholder="">
                   </mat-form-field>
                 </th>
               </tr>
@@ -60,6 +68,21 @@
     </div>
   </form>
   <button mat-flat-button color="primary" class="example-form" (click)="genererCraPdf(craForm.value)">Générer CRA en Pdf</button>
+</div>
+
+  <div class="jourF-container">
+  <button mat-flat-button color="primary" class="example-form" >Les jours fériés du mois </button>
+  <p>
+  <div *ngFor="let jourFerie of joursFeries" class="jour-ferie">
+    <span class="jour-ferie-date">{{jourFerie.date}}</span>
+    <span class="jour-ferie-name">{{jourFerie.name}}</span>
+  </div>
+   </div>
+</div>
+  
+  
+ 
+  
 
     
   
